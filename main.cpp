@@ -21,11 +21,7 @@ float speedY = 2;
 int contJ1 = 0;
 int contJ2 = 0;
 
-
-
-
-
-int main()
+void loadAssets()
 {
     //Cargamos todos los assets que vamos a usar para cada objeto
     if (!texturaBall.loadFromFile("textures/ball.png"))
@@ -47,6 +43,10 @@ int main()
         cout << "Error al cargar fuentes" << endl;
     }
 
+};
+
+void configElements()
+{
     //Les asignamos las texturas,ajustamos tamaño y ubicacion
     spriteBall.setTexture(texturaBall);
     spriteBall.setOrigin((float)texturaBall.getSize().x/2, (float)texturaBall.getSize().y / 2);
@@ -70,8 +70,10 @@ int main()
     contP2.setCharacterSize(40);
     contP2.setPosition(450, 25);
     contP2.setString(to_string(contJ2));
+};
 
-
+void createGameWindows()
+{
     //Creamos la ventana de juego
     RenderWindow gameWindow(VideoMode(800, 600), "Pong");
     gameWindow.setFramerateLimit(160);//Limitamos los frames para que sea estable y las velocidades de la pelota no se descontrolen
@@ -148,6 +150,16 @@ int main()
         gameWindow.display();
     }
    
+};
+
+
+
+int main()
+{
+    
+    loadAssets();
+    configElements();
+    createGameWindows();
 	
 	return 0;
 }
